@@ -102,20 +102,3 @@ answer = sum(
     if is_safe_with_one_offender_sophisticated([int(x) for x in line.split()])
 )
 print(answer)
-
-safe_lines_brute_force = {
-    line
-    for line in data.splitlines()
-    if is_safe_with_one_offender([int(x) for x in line.split()])
-}
-
-safe_lines_sophisticated = {
-    line
-    for line in data.splitlines()
-    if is_safe_with_one_offender_sophisticated([int(x) for x in line.split()])
-}
-
-# find the difference
-print(safe_lines_brute_force - safe_lines_sophisticated)
-
-print(is_safe_with_one_offender_sophisticated([12, 10, 7, 8, 4]))
