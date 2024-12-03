@@ -55,12 +55,13 @@ if __name__ == "__main__":
     acc = 0
     flag = 1
     for expr in expressions:
-        if isinstance(expr, MultExpr):
-            acc += expr.value() * flag
-        elif isinstance(expr, DontExpr):
-            flag = 0
-        elif isinstance(expr, DoExpr):
-            flag = 1
-        else:
-            assert_never(expr)
+        match expr:
+            case MultExpr(a, b):
+                acc += expr.value() * flag
+            case DontExpr():
+                flag = 0
+            case DoExpr():
+                flag = 1
+            case _:
+                assert_never(expr)
     print(acc)
